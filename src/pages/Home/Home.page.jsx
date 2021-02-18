@@ -1,24 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import Header from '../../components/Header'
+import Header from '../../components/Header';
+import VideoCard from '../../components/VideoCard';
 
-const Title = styled.p`
-  font-size: 2rem;
-  text-align: center;
-`;
-
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-row-gap: 10px;
-  justify-content: space-around;
-`;
-
-const Box = styled.div`
-  height: 100px;
-  width: 100px;
-  background-color: ${props => props.color || 'green'};
-`;
+import { GridContainer, Title } from './styled';
+import { items } from '../../mock/youtube-videos-mock.json';
 
 const HomePage = () => {
   return (
@@ -26,18 +11,20 @@ const HomePage = () => {
       <Header />
       <Title>Welcome to my minichallenge :)</Title>
       <GridContainer>
-        <Box color="red"></Box>
-        <Box color="blue"></Box>
-        <Box></Box>
-        <Box color="red"></Box>
-        
-        <Box color="red"></Box>
-        <Box color="blue"></Box>
-        <Box></Box>
-
+        {items.map((i) => {
+          const { snippet } = i;
+          const { title, description, thumbnails } = snippet;
+          return (
+            <VideoCard
+              title={title}
+              description={description}
+              thumbnail={thumbnails.high.url}
+            />
+          );
+        })}
       </GridContainer>
     </>
   );
-}
+};
 
 export default HomePage;
