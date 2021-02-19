@@ -29,6 +29,6 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
-
 export { getVideoCardsFromList };
+
+export default HomePage;
