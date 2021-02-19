@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardContainer, Thumbnail, Title, Description } from './styled';
 
-const VideoCard = ({ title, description, thumbnail, url }) => {
+const VideoCard = ({ title, description, thumbnail }) => {
   return (
     <CardContainer>
       <Thumbnail src={thumbnail} />

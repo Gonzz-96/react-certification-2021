@@ -7,7 +7,7 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1C5476;
+  background-color: #1c5476;
 `;
 
 export { HeaderContainer };
