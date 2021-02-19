@@ -13,5 +13,6 @@
     "array-callback-return": "off",
     "consistent-return": "off",
     "no-console": "off"
-  }
+  },
+  "env": { "jest/globalr": true }
 }

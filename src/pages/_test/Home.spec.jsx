@@ -1,5 +1,4 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { getVideoCardsFromList } from '../Home/Home.page';
 
 import { items } from '../../mock/youtube-videos-mock.json';
