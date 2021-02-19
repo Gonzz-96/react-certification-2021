@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardContainer, Thumbnail, Title, Description } from './styled';
 
-const VideoCard = ({ title, description, thumbnail, alt = 'thumbnail' }) => {
+const VideoCard = ({ title, description, thumbnail, alt = 'Youtube Video' }) => {
   return (
     <CardContainer>
       <Thumbnail src={thumbnail} alt={alt} />
