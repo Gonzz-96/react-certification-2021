@@ -1,6 +1,6 @@
 {
-  "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
-  "plugins": ["prettier"],
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": "error",
@@ -13,5 +13,6 @@
     "array-callback-return": "off",
     "consistent-return": "off",
     "no-console": "off"
-  }
+  },
+  "env": { "jest/globalr": true }
 }

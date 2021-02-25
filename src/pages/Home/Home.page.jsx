@@ -1,39 +1,29 @@
-import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React from 'react';
+import Header from '../../components/Header';
+import VideoCard from '../../components/VideoCard';
 
-import { useAuth } from '../../providers/Auth';
-import './Home.styles.css';
+import { GridContainer, Title } from './styled';
+import { items } from '../../mock/youtube-videos-mock.json';
 
-function HomePage() {
-  const history = useHistory();
-  const sectionRef = useRef(null);
-  const { authenticated, logout } = useAuth();
-
-  function deAuthenticate(event) {
-    event.preventDefault();
-    logout();
-    history.push('/');
-  }
-
+const HomePage = () => {
   return (
-    <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
-    </section>
+    <React.Fragment>
+      <Header />
+      <Title>Welcome to my minichallenge :)</Title>
+      <GridContainer>
+        {items.map((i) => {
+          const { title, description, thumbnails } = i.snippet;
+          return (
+            <VideoCard
+              title={title}
+              description={description}
+              thumbnail={thumbnails.high.url}
+            />
+          );
+        })}
+      </GridContainer>
+    </React.Fragment>
   );
-}
+};
 
 export default HomePage;
