@@ -4,11 +4,12 @@ import VideoCard from '../../components/VideoCard';
 
 import { GridContainer, Title } from './styled';
 
-import { useVideos } from '../../client/useVideos';
+import { useVideosSearch } from '../../hooks/useVideosSearch';
 
 const HomePage = () => {
-  const videos = useVideos();
   const [videoCards, setVideoCards] = useState([]);
+  const [keyword, setKeyword] = useState('wizeline');
+  const videos = useVideosSearch(keyword);
 
   useEffect(() => {
     videos.then((result) => {
@@ -24,11 +25,17 @@ const HomePage = () => {
       });
       setVideoCards(newVideoCards);
     });
-  }, []);
+    console.log(keyword);
+  }, [keyword]);
+
+  const onSubmit = (newKeyword) => {
+    console.log(newKeyword);
+    setKeyword(newKeyword);
+  };
 
   return (
     <React.Fragment>
-      <Header />
+      <Header onSubmit={onSubmit} />
       <Title>Welcome to my minichallenge :)</Title>
       <GridContainer>{videoCards}</GridContainer>
     </React.Fragment>
