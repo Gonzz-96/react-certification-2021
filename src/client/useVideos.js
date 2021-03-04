@@ -12,7 +12,16 @@ const useVideos = (keyword = 'wizeline') => {
     console.log('Remote videos');
     return fetch(
       `${YOUTUBE_API_BASE_URL}search?q=${keyword}&maxResults=25&part=snippet&key=AIzaSyCrDMiVWZcjDW-ZEJnxyoOVY860LhLZ2Hg`
-    ).then;
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then(
+        (data) =>
+          new Promise((resolve, reject) => {
+            resolve(data.items);
+          })
+      );
   }
 };
 
