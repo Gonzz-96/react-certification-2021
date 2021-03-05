@@ -1,4 +1,5 @@
 import React from 'react';
+import Suggestions from '../../components/Suggestions';
 import {
   VideoInformationContainer,
   GeneralContainer,
@@ -24,7 +25,7 @@ const VideoDetail = ({ video }) => {
             <p>{snippet.description}</p>
           </div>
         </VideoInformationContainer>
-        <SuggestionsContainer></SuggestionsContainer>
+        <Suggestions video={video} />
       </GeneralContainer>
     </React.Fragment>
   );

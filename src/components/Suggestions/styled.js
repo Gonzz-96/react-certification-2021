@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const UList = styled.ul`
   flex: 1;
-  background-color: blue;
+  padding: 0px;
+  list-style-type: none;
 `;
 
 export { UList };
