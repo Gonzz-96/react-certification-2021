@@ -2,7 +2,7 @@ import React from 'react';
 import Suggestions from '../../components/Suggestions';
 import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
 
-const VideoDetail = ({ video }) => {
+const VideoDetail = ({ video, restOfVideos }) => {
   const { id, snippet } = video;
   return (
     <React.Fragment>
@@ -20,7 +20,7 @@ const VideoDetail = ({ video }) => {
             <p>{snippet.description}</p>
           </div>
         </VideoInformationContainer>
-        <Suggestions video={video} />
+        <Suggestions videos={restOfVideos} />
       </GeneralContainer>
     </React.Fragment>
   );
