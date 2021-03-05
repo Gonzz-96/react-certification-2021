@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import VideoCard from '../../components/VideoCard';
-
+import VideoDetail from '../VideoDetail';
 import { GridContainer, Title } from './styled';
 
 import { useVideosSearch } from '../../hooks/useVideosSearch';
@@ -9,6 +9,7 @@ import { useVideosSearch } from '../../hooks/useVideosSearch';
 const HomePage = () => {
   const [videoCards, setVideoCards] = useState([]);
   const [keyword, setKeyword] = useState('wizeline');
+  const [selectedVideo, setSelectedVideo] = useState();
   const videos = useVideosSearch(keyword);
 
   useEffect(() => {
@@ -18,6 +19,9 @@ const HomePage = () => {
         return (
           <VideoCard
             title={title}
+            onClick={() => {
+              setSelectedVideo(i);
+            }}
             description={description}
             thumbnail={thumbnails.high.url}
           />
@@ -33,13 +37,24 @@ const HomePage = () => {
     setKeyword(newKeyword);
   };
 
-  return (
-    <React.Fragment>
-      <Header onSubmit={onSubmit} />
-      <Title>Welcome to my minichallenge :)</Title>
-      <GridContainer>{videoCards}</GridContainer>
-    </React.Fragment>
-  );
+  let content;
+  if (!selectedVideo) {
+    content = (
+      <React.Fragment>
+        <Header onSubmit={onSubmit} />
+        <Title>Welcome to my minichallenge :)</Title>
+        <GridContainer>{videoCards}</GridContainer>
+      </React.Fragment>
+    );
+  } else {
+    content = (
+      <React.Fragment>
+        <VideoDetail video={selectedVideo} />
+      </React.Fragment>
+    );
+  }
+
+  return content;
 };
 
 export default HomePage;
