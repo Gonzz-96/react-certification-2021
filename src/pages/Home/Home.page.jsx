@@ -17,6 +17,7 @@ const HomePage = () => {
       setVideos(result);
     });
     console.log(keyword);
+    // eslint-disable-next-line
   }, [keyword]);
 
   const onSubmit = (newKeyword) => {
