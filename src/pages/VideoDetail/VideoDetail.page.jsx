@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Suggestions from '../../components/Suggestions';
 import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
 
 const VideoDetail = ({ video, restOfVideos }) => {
-  const { id, snippet } = video;
+  const [stateVideo, setVideo] = useState(video);
+  const { id, snippet } = stateVideo;
+
+  const onSelectedVideo = (video) => {
+    setVideo(video);
+  };
+
   return (
     <React.Fragment>
       <GeneralContainer>
@@ -11,7 +17,7 @@ const VideoDetail = ({ video, restOfVideos }) => {
           <IFrame
             id="ytplayer"
             type="text/html"
-            src={`https://www.youtube.com/embed/${video.id.videoId}`}
+            src={`https://www.youtube.com/embed/${id.videoId}`}
             frameborder="0"
           ></IFrame>
           <div style={{ margin: '0px 0px 0px 20px' }}>
@@ -20,7 +26,7 @@ const VideoDetail = ({ video, restOfVideos }) => {
             <p>{snippet.description}</p>
           </div>
         </VideoInformationContainer>
-        <Suggestions videos={restOfVideos} />
+        <Suggestions videos={restOfVideos} onSelectedVideo={onSelectedVideo} />
       </GeneralContainer>
     </React.Fragment>
   );
