@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import VideoCard from '../../components/VideoCard';
 import VideoDetail from '../VideoDetail';
@@ -7,20 +7,9 @@ import { GridContainer, Title } from './styled';
 import { useVideosSearch } from '../../hooks/useVideosSearch';
 
 const HomePage = () => {
-  const [videos, setVideos] = useState([]);
   const [keyword, setKeyword] = useState('wizeline');
   const [selectedVideo, setSelectedVideo] = useState();
-  const videoSearch = useVideosSearch(keyword);
-
-  useEffect(() => {
-    videoSearch.then((result) => {
-      setVideos(result);
-    });
-    console.log(keyword);
-
-    return () => {};
-    // eslint-disable-next-line
-  }, [keyword]);
+  const videos = useVideosSearch(keyword);
 
   const onSubmit = (newKeyword) => {
     console.log(newKeyword);
