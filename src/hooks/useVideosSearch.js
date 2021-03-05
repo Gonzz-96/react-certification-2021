@@ -8,12 +8,17 @@ const useVideosSearch = (keyword = 'wizeline') => {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const response = await fetch(
-        `${YOUTUBE_API_BASE_URL}search?q=${keyword}&maxResults=25&part=snippet&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
-      );
-      const { items } = await response.json();
+      try {
+        const response = await fetch(
+          `${YOUTUBE_API_BASE_URL}search?q=${keyword}&maxResults=25&part=snippet&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+        );
+        const { items } = await response.json();
 
-      setVideos(items);
+        setVideos(items);
+      } catch (e) {
+        console.log(e);
+        setVideos([]);
+      }
     };
 
     if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
