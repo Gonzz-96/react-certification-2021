@@ -49,6 +49,7 @@ const HomePage = () => {
   } else {
     content = (
       <React.Fragment>
+        <Header onSubmit={onSubmit} />
         <VideoDetail video={selectedVideo} />
       </React.Fragment>
     );

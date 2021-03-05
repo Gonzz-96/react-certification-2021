@@ -1,11 +1,6 @@
 import React from 'react';
 import Suggestions from '../../components/Suggestions';
-import {
-  VideoInformationContainer,
-  GeneralContainer,
-  SuggestionsContainer,
-  IFrame,
-} from './styled';
+import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
 
 const VideoDetail = ({ video }) => {
   const { id, snippet } = video;
