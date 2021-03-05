@@ -3,7 +3,7 @@ import { items } from '../mock/youtube-videos-mock.json';
 const YOUTUBE_API_BASE_URL = 'https://youtube.googleapis.com/youtube/v3/';
 
 const useVideosSearch = (keyword = 'wizeline') => {
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
     return new Promise((resolve, reject) => {
       resolve(items);
     });
