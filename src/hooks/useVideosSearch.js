@@ -26,8 +26,7 @@ const useVideosSearch = (keyword = 'wizeline') => {
     } else {
       fetchVideos();
     }
-    // eslint-disable-next-line
-  }, []);
+  }, [keyword]);
 
   return videos;
 };
