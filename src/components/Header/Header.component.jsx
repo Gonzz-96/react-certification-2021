@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import KeywordContext from '../../context/SearchContext';
 import {
   HeaderContainer,
   LeftContent,
@@ -8,8 +9,9 @@ import {
   UserIcon,
 } from './styled';
 
-const Header = ({ onSubmit }) => {
+const Header = () => {
   const [text, setText] = useState('');
+  const { dispatch } = useContext(KeywordContext);
 
   return (
     <HeaderContainer>
@@ -18,7 +20,7 @@ const Header = ({ onSubmit }) => {
         <form
           style={{ height: '30px' }}
           onSubmit={(e) => {
-            onSubmit(text);
+            dispatch({ type: 'NEW_WORD', payload: text });
             e.preventDefault();
           }}
         >
