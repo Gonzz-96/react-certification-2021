@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Header from '../../components/Header';
 import VideoCard from '../../components/VideoCard';
 import VideoDetail from '../VideoDetail';
 import { GridContainer, Title } from './styled';
+import SearchContext from '../../context/SearchContext';
 
 import { useVideosSearch } from '../../hooks/useVideosSearch';
 
 const HomePage = () => {
-  const [keyword, setKeyword] = useState('wizeline');
   const [selectedVideo, setSelectedVideo] = useState();
-  const videos = useVideosSearch(keyword);
-
-  const onSubmit = (newKeyword) => {
-    console.log(newKeyword);
-    setKeyword(newKeyword);
-  };
+  const videos = useVideosSearch();
 
   let content;
   if (!selectedVideo) {
     content = (
       <React.Fragment>
-        <Header onSubmit={onSubmit} />
+        <Header />
         <Title>Welcome to my minichallenge :)</Title>
         <GridContainer>
           {videos.map((i) => {
@@ -42,7 +37,7 @@ const HomePage = () => {
   } else {
     content = (
       <React.Fragment>
-        <Header onSubmit={onSubmit} />
+        <Header />
         <VideoDetail video={selectedVideo} restOfVideos={videos} />
       </React.Fragment>
     );
