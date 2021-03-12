@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import KeywordContext from '../context/SearchContext';
 import { items } from '../mock/youtube-videos-mock.json';
 
 const YOUTUBE_API_BASE_URL = 'https://youtube.googleapis.com/youtube/v3/';
 
-const useVideosSearch = (keyword = 'wizeline') => {
+const useVideosSearch = () => {
   const [videos, setVideos] = useState([]);
+  const { keyword } = useContext(KeywordContext);
 
   useEffect(() => {
     const fetchVideos = async () => {
