@@ -10,7 +10,11 @@ import Private from '../Private';
 import Fortune from '../Fortune';
 import Layout from '../Layout';
 import { random } from '../../utils/fns';
-import KeywordContext, { reducer } from '../../context/SearchContext';
+import KeywordContext, { reducer as keywordReducer } from '../../context/SearchContext';
+import ThemeContext, {
+  reducer as themeReducer,
+  lightTheme,
+} from '../../context/ThemeContext';
 
 function App() {
   useLayoutEffect(() => {
@@ -31,28 +35,31 @@ function App() {
     };
   }, []);
 
-  const [keyword, dispatch] = useReducer(reducer, 'wizeline');
+  const [keyword, keywordDispatch] = useReducer(keywordReducer, 'wizeline');
+  const [theme, themeDispatch] = useReducer(themeReducer, lightTheme);
 
   return (
     <BrowserRouter>
       <AuthProvider>
         <Layout>
-          <Switch>
-            <Route exact path="/">
-              <KeywordContext.Provider value={{ keyword, dispatch }}>
-                <HomePage />
-              </KeywordContext.Provider>
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
+          <ThemeContext.Provider value={{ theme, dispatch: themeDispatch }}>
+            <Switch>
+              <Route exact path="/">
+                <KeywordContext.Provider value={{ keyword, dispatch: keywordDispatch }}>
+                  <HomePage />
+                </KeywordContext.Provider>
+              </Route>
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
+              <Private exact path="/secret">
+                <SecretPage />
+              </Private>
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </ThemeContext.Provider>
           <Fortune />
         </Layout>
       </AuthProvider>
