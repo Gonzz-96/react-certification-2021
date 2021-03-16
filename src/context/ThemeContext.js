@@ -1,12 +1,12 @@
 import React from 'react';
 
 const lightTheme = {
-  color: 'black',
-  backgroundColor: 'white',
+  color: '#000000',
+  backgroundColor: '#FFFFFF',
 };
 
 const darkTheme = {
-  color: 'white',
+  color: '#FFFFFF',
   backgroundColor: '#303030',
 };
 
