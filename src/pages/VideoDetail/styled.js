@@ -17,8 +17,10 @@ const SuggestionsContainer = styled.div`
 `;
 
 const GeneralContainer = styled.div`
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
   display: flex;
-  height: 100vh;
+  height: 92vh;
   width: 100vw;
 
   @media screen and (max-width: 800px) {
