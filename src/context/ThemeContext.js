@@ -3,11 +3,14 @@ import React from 'react';
 const lightTheme = {
   color: '#000000',
   backgroundColor: '#FFFFFF',
+  cardTextColor: '#757575',
 };
 
 const darkTheme = {
   color: '#FFFFFF',
   backgroundColor: '#303030',
+  cardBackgroundColor: '#424242',
+  cardTextColor: '#C7C7C7',
 };
 
 const ThemeContext = React.createContext({});
