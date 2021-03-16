@@ -10,13 +10,9 @@ import ThemeContext from '../../context/ThemeContext';
 const HomePage = () => {
   const [selectedVideo, setSelectedVideo] = useState();
   const videos = useVideosSearch();
-  const { theme, dispatch } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const { backgroundColor, color } = theme;
-
-  setTimeout(() => {
-    dispatch({ type: 'dark' });
-  }, 5000);
 
   let content;
   if (!selectedVideo) {

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import KeywordContext from '../../context/SearchContext';
+import ThemeContext from '../../context/ThemeContext';
 import {
   HeaderContainer,
   LeftContent,
@@ -11,7 +11,7 @@ import {
 
 const Header = () => {
   const [text, setText] = useState('');
-  const { dispatch } = useContext(KeywordContext);
+  const { theme, dispatch } = useContext(ThemeContext);
 
   return (
     <HeaderContainer>
@@ -34,7 +34,19 @@ const Header = () => {
         </form>
       </LeftContent>
       <RightContent>
-        <p style={{ color: 'white' }}>Dark Mode</p>
+        <input
+          type="checkbox"
+          id="dark-mode"
+          name="dark-mode"
+          value={theme.isDarkMode}
+          onChange={(e) => {
+            dispatch({ type: theme.isDarkMode ? 'light' : 'dark' });
+          }}
+        />
+        <label for="dark-mode" style={{ color: 'white' }}>
+          Dark Mode
+        </label>
+
         <UserIcon src={`${process.env.PUBLIC_URL}/user_icon.png`} alt="User Icon" />
       </RightContent>
     </HeaderContainer>

@@ -1,12 +1,14 @@
 import React from 'react';
 
 const lightTheme = {
+  isDarkMode: false,
   color: '#000000',
   backgroundColor: '#FFFFFF',
   cardTextColor: '#757575',
 };
 
 const darkTheme = {
+  isDarkMode: true,
   color: '#FFFFFF',
   backgroundColor: '#303030',
   cardBackgroundColor: '#424242',
