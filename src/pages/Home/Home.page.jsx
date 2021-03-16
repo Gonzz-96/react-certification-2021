@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import VideoCard from '../../components/VideoCard';
 import VideoDetail from '../VideoDetail';
 import { GridContainer, Title } from './styled';
-import SearchContext from '../../context/SearchContext';
 
 import { useVideosSearch } from '../../hooks/useVideosSearch';
 
