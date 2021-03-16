@@ -5,6 +5,8 @@ const CardContainer = styled.div`
   height: 360px;
   display: flex;
   cursor: pointer;
+  background-color: ${(props) =>
+    props.theme.cardBackgroundColor || props.theme.backgroundColor};
   flex-direction: column;
   border-radius: 5px 5px;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%),
@@ -26,7 +28,7 @@ const Title = styled.p`
 const Description = styled.p`
   margin: 0px 10px 10px 10px;
   font-size: 14px;
-  color: #8e8e8e;
+  color: ${(props) => props.theme.cardTextColor || props.theme.color};
 `;
 
 export { CardContainer, Thumbnail, Title, Description };
