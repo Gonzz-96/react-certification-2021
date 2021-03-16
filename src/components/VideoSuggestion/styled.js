@@ -4,6 +4,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   padding-bottom: 5px;
+  cursor: pointer;
 `;
 
 const Thumbnail = styled.img`
