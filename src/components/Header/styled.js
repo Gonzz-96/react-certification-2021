@@ -42,6 +42,8 @@ const MenuIcon = styled.img`
 
 const SearchBar = styled.input`
   width: 240px;
+  height: 100%;
+  font-size: 1rem;
   margin-left: 50px;
   border: none;
   border-radius: 30px;
@@ -52,7 +54,7 @@ const SearchBar = styled.input`
   }
 
   @media screen and (max-width: 900px) {
-    width: 800px;
+    width: 100%;
   }
 `;
 
