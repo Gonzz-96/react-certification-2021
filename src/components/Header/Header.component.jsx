@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import KeywordContext from '../../context/SearchContext';
 import ThemeContext from '../../context/ThemeContext';
 import {
   HeaderContainer,
@@ -10,8 +11,9 @@ import {
 } from './styled';
 
 const Header = () => {
-  const [text, setText] = useState('');
-  const { theme, dispatch } = useContext(ThemeContext);
+  const { theme, dispatch: dispatchTheme } = useContext(ThemeContext);
+  const { keyword, dispatch: dispatchKeyword } = useContext(KeywordContext);
+  const [text, setText] = useState(keyword);
 
   return (
     <HeaderContainer>
@@ -20,7 +22,7 @@ const Header = () => {
         <form
           style={{ height: '30px' }}
           onSubmit={(e) => {
-            dispatch({ type: 'NEW_WORD', payload: text });
+            dispatchKeyword({ type: 'NEW_WORD', payload: text });
             e.preventDefault();
           }}
         >
@@ -38,9 +40,9 @@ const Header = () => {
           type="checkbox"
           id="dark-mode"
           name="dark-mode"
-          value={theme.isDarkMode}
+          checked={theme.isDarkMode}
           onChange={(e) => {
-            dispatch({ type: theme.isDarkMode ? 'light' : 'dark' });
+            dispatchTheme({ type: theme.isDarkMode ? 'light' : 'dark' });
           }}
         />
         <label for="dark-mode" style={{ color: 'white' }}>
