@@ -1,15 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import ThemeContext from '../../context/ThemeContext';
 import Suggestions from '../../components/Suggestions';
 import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 
-const VideoDetail = ({ video, restOfVideos }) => {
-  const { theme } = useContext(ThemeContext);
-
+const VideoDetail = ({ restOfVideos }) => {
   const { id } = useParams();
-
-  const onSelectedVideo = (video) => {};
+  const { theme } = useContext(ThemeContext);
+  const { snippet } = useLocation().state.video;
 
   return (
     <React.Fragment>
@@ -22,12 +20,12 @@ const VideoDetail = ({ video, restOfVideos }) => {
             frameborder="0"
           ></IFrame>
           <div style={{ margin: '0px 0px 0px 20px' }}>
-            <h1>{'snippet.title'}</h1>
-            <h2>{'snippet.channelTitle'}</h2>
-            <p>{'snippet.description'}</p>
+            <h1>{snippet.title}</h1>
+            <h2>{snippet.channelTitle}</h2>
+            <p>{snippet.description}</p>
           </div>
         </VideoInformationContainer>
-        <Suggestions videos={restOfVideos} onSelectedVideo={onSelectedVideo} />
+        <Suggestions videos={restOfVideos} />
       </GeneralContainer>
     </React.Fragment>
   );
