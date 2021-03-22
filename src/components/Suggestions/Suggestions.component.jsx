@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import SearchVideosContext from '../../context/SearchVideosContext';
 
-import mockResponse from '../../mock/youtube-videos-mock.json';
 import VideoSuggestion from '../VideoSuggestion';
 import { VideoList } from './styled';
 
-const Suggestions = ({ videos = mockResponse.items }) => {
+const Suggestions = () => {
+  const { searchVideos: videos } = useContext(SearchVideosContext);
+
   return (
     <VideoList>
       {videos

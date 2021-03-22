@@ -4,7 +4,7 @@ import Suggestions from '../../components/Suggestions';
 import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
 import { useLocation, useParams } from 'react-router';
 
-const VideoDetail = ({ restOfVideos }) => {
+const VideoDetail = () => {
   const { id } = useParams();
   const { theme } = useContext(ThemeContext);
   const { snippet } = useLocation().state.video;
@@ -25,7 +25,7 @@ const VideoDetail = ({ restOfVideos }) => {
             <p>{snippet.description}</p>
           </div>
         </VideoInformationContainer>
-        <Suggestions videos={restOfVideos} />
+        <Suggestions />
       </GeneralContainer>
     </React.Fragment>
   );

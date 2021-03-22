@@ -15,6 +15,7 @@ const HomePage = () => {
 
   useEffect(() => {
     searchVideosDispatch({ type: 'NEW_VIDEOS', payload: videos });
+    // eslint-disable-next-line
   }, [videos]);
 
   return (
