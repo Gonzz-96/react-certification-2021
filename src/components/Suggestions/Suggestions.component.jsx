@@ -4,19 +4,13 @@ import mockResponse from '../../mock/youtube-videos-mock.json';
 import VideoSuggestion from '../VideoSuggestion';
 import { VideoList } from './styled';
 
-const Suggestions = ({ videos = mockResponse.items, onSelectedVideo }) => {
+const Suggestions = ({ videos = mockResponse.items }) => {
   return (
     <VideoList>
       {videos
         .filter((item) => item.id.kind !== 'youtube#channel')
         .map((video) => (
-          <VideoSuggestion
-            video={video}
-            onClick={(e) => {
-              onSelectedVideo(video);
-              console.log('video changed');
-            }}
-          />
+          <VideoSuggestion video={video} />
         ))}
     </VideoList>
   );
