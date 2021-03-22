@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 
 import VideoCard from '../../components/VideoCard';
 import { GridContainer, Title } from './styled';
@@ -18,15 +18,7 @@ const HomePage = () => {
         <Title theme={{ color }}>Welcome to my minichallenge :)</Title>
         <GridContainer theme={{ color }}>
           {videos.map((i) => {
-            const { title, description, thumbnails } = i.snippet;
-            return (
-              <VideoCard
-                id={i.id.videoId}
-                title={title}
-                description={description}
-                thumbnail={thumbnails.high.url}
-              />
-            );
+            return <VideoCard video={i} />;
           })}
         </GridContainer>
       </div>
