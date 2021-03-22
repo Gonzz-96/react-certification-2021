@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Header from '../../components/Header';
+
 import VideoCard from '../../components/VideoCard';
 import VideoDetail from '../VideoDetail';
 import { GridContainer, Title } from './styled';
@@ -19,7 +19,6 @@ const HomePage = () => {
     content = (
       <React.Fragment>
         <div style={{ backgroundColor }}>
-          <Header />
           <Title theme={{ color }}>Welcome to my minichallenge :)</Title>
           <GridContainer theme={{ color }}>
             {videos.map((i) => {
@@ -42,7 +41,6 @@ const HomePage = () => {
   } else {
     content = (
       <React.Fragment>
-        <Header />
         <VideoDetail video={selectedVideo} restOfVideos={videos} />
       </React.Fragment>
     );

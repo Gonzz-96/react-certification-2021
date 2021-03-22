@@ -11,6 +11,7 @@ import ThemeContext, {
   reducer as themeReducer,
   lightTheme,
 } from '../../context/ThemeContext';
+import Header from '../Header';
 
 function App() {
   useLayoutEffect(() => {
@@ -39,16 +40,19 @@ function App() {
       <AuthProvider>
         <Layout>
           <ThemeContext.Provider value={{ theme, dispatch: themeDispatch }}>
-            <Switch>
-              <Route exact path="/">
-                <KeywordContext.Provider value={{ keyword, dispatch: keywordDispatch }}>
-                  <HomePage />
-                </KeywordContext.Provider>
-              </Route>
-              <Route path="*">
-                <NotFound />
-              </Route>
-            </Switch>
+            <KeywordContext.Provider value={{ keyword, dispatch: keywordDispatch }}>
+              <div>
+                <Header />
+                <Switch>
+                  <Route exact path="/">
+                    <HomePage />
+                  </Route>
+                  <Route path="*">
+                    <NotFound />
+                  </Route>
+                </Switch>
+              </div>
+            </KeywordContext.Provider>
           </ThemeContext.Provider>
         </Layout>
       </AuthProvider>
