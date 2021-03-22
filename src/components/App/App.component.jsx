@@ -12,6 +12,7 @@ import ThemeContext, {
   lightTheme,
 } from '../../context/ThemeContext';
 import Header from '../Header';
+import VideoDetail from '../../pages/VideoDetail';
 
 function App() {
   useLayoutEffect(() => {
@@ -46,6 +47,9 @@ function App() {
                 <Switch>
                   <Route exact path="/">
                     <HomePage />
+                  </Route>
+                  <Route path="/video/:id">
+                    <VideoDetail />
                   </Route>
                   <Route path="*">
                     <NotFound />
