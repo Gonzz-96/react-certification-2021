@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import ThemeContext from '../../context/ThemeContext';
 import Suggestions from '../../components/Suggestions';
 import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
-import { useLocation, useParams } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router';
 import { storage } from '../../utils/storage';
+import AuthContext from '../../context/AuthContext';
 
 const VideoDetail = () => {
   const { id } = useParams();
   const { theme } = useContext(ThemeContext);
+  const { auth } = useContext(AuthContext);
+  const history = useHistory();
   const video = useLocation().state.video;
   const { snippet } = video;
   const [isFavorite, setIsFavorite] = useState(false);
@@ -37,6 +40,10 @@ const VideoDetail = () => {
             <button
               type="button"
               onClick={() => {
+                if (!auth) {
+                  history.push('/login');
+                  return;
+                }
                 const favorites = storage.get('favorites') || [];
                 if (isFavorite) {
                   storage.set(
