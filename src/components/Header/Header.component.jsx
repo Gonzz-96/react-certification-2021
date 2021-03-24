@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext';
 import KeywordContext from '../../context/SearchContext';
 import ThemeContext from '../../context/ThemeContext';
 import {
@@ -15,8 +16,11 @@ import {
 const Header = () => {
   const { theme, dispatch: dispatchTheme } = useContext(ThemeContext);
   const { keyword, dispatch: dispatchKeyword } = useContext(KeywordContext);
+  const { auth } = useContext(AuthContext);
   const [text, setText] = useState(keyword);
   const history = useHistory();
+
+  const userUrl = auth.avatarUrl || `${process.env.PUBLIC_URL}/user_icon.png`;
 
   return (
     <HeaderContainer>
@@ -56,7 +60,7 @@ const Header = () => {
         </label>
 
         <UserIcon
-          src={`${process.env.PUBLIC_URL}/user_icon.png`}
+          src={userUrl}
           alt="User Icon"
           onClick={() => {
             history.push('/login');
