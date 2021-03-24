@@ -9,6 +9,7 @@ import ThemeContext, {
   reducer as themeReducer,
   lightTheme,
 } from '../../context/ThemeContext';
+import AuthContext, { authDispatcher } from '../../context/AuthContext';
 import Header from '../Header';
 import Routes from '../Routes/Routes.component';
 
@@ -16,6 +17,7 @@ function App() {
   const [theme, themeDispatch] = useReducer(themeReducer, lightTheme);
   const [keyword, keywordDispatch] = useReducer(keywordReducer, 'wizeline');
   const [searchVideos, searchVideosDispatch] = useReducer(searchVideosReducer, []);
+  const [auth, authDispatch] = useReducer(authDispatcher, {});
 
   return (
     <BrowserRouter>
@@ -25,8 +27,10 @@ function App() {
             <SearchVideosContext.Provider
               value={{ searchVideos, dispatch: searchVideosDispatch }}
             >
-              <Header />
-              <Routes />
+              <AuthContext.Provider value={{ auth, dispatch: authDispatch }}>
+                <Header />
+                <Routes />
+              </AuthContext.Provider>
             </SearchVideosContext.Provider>
           </KeywordContext.Provider>
         </ThemeContext.Provider>
