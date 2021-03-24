@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import VideoCard from '../../components/VideoCard';
 import { Title, GridContainer } from './styled';
 import ThemeContext from '../../context/ThemeContext';
+import SearchVideosContext from '../../context/SearchVideosContext';
 import { storage } from '../../utils/storage';
 
 const Favorites = ({ videos = [] }) => {
@@ -9,9 +10,12 @@ const Favorites = ({ videos = [] }) => {
   const { backgroundColor, color } = theme;
 
   const [favorites, setFavorites] = useState([]);
+  const { dispatch: searchVideosDispatch } = useContext(SearchVideosContext);
 
   useEffect(() => {
-    setFavorites(storage.get('favorites') || []);
+    const favorites = storage.get('favorites') || [];
+    setFavorites(favorites);
+    searchVideosDispatch({ type: 'NEW_VIDEOS', payload: favorites });
   }, []);
 
   return (
