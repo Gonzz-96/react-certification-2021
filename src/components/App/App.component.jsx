@@ -17,7 +17,7 @@ function App() {
   const [theme, themeDispatch] = useReducer(themeReducer, lightTheme);
   const [keyword, keywordDispatch] = useReducer(keywordReducer, 'wizeline');
   const [searchVideos, searchVideosDispatch] = useReducer(searchVideosReducer, []);
-  const [auth, authDispatch] = useReducer(authDispatcher, {});
+  const [auth, authDispatch] = useReducer(authDispatcher, null);
 
   return (
     <BrowserRouter>

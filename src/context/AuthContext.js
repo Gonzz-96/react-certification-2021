@@ -7,7 +7,7 @@ const authDispatcher = (state, { type, payload }) => {
     case 'LOGIN':
       return payload;
     case 'LOGOUT':
-      return {};
+      return null;
     default:
       throw new Error('Login action not supported');
   }

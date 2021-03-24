@@ -9,7 +9,7 @@ const ProtectedRoute = (props) => {
   console.log(JSON.stringify(auth));
   let content;
 
-  if (Object.keys(auth).length > 0) {
+  if (auth) {
     content = <Route {...props} />;
   } else {
     content = <Redirect to="/login" />;

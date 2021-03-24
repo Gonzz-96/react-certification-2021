@@ -19,7 +19,7 @@ const Header = () => {
   const [text, setText] = useState(keyword);
   const history = useHistory();
 
-  const userUrl = auth.avatarUrl || `${process.env.PUBLIC_URL}/user_icon.png`;
+  const userUrl = auth?.avatarUrl || `${process.env.PUBLIC_URL}/user_icon.png`;
 
   return (
     <HeaderContainer>
