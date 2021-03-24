@@ -1,14 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ThemeContext from '../../context/ThemeContext';
 import Suggestions from '../../components/Suggestions';
 import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
 import { useLocation, useParams } from 'react-router';
+import { storage } from '../../utils/storage';
 
 const VideoDetail = () => {
   const { id } = useParams();
   const { theme } = useContext(ThemeContext);
   const video = useLocation().state.video;
   const { snippet } = video;
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const favorites = storage?.get('favorites') || [];
+    const isThisVideoFavorite =
+      favorites.filter((i) => {
+        return i.id.videoId === id;
+      }).length === 1;
+
+    setIsFavorite(isThisVideoFavorite);
+  }, [id]);
 
   return (
     <React.Fragment>
@@ -22,6 +34,25 @@ const VideoDetail = () => {
           ></IFrame>
           <div style={{ margin: '0px 0px 0px 20px' }}>
             <h1>{snippet.title}</h1>
+            <button
+              type="button"
+              onClick={() => {
+                const favorites = storage.get('favorites') || [];
+                if (isFavorite) {
+                  storage.set(
+                    'favorites',
+                    favorites.filter((i) => {
+                      return i.id.videoId !== video.id.videoId;
+                    })
+                  );
+                } else {
+                  storage.set('favorites', [...favorites, video]);
+                }
+                setIsFavorite(!isFavorite);
+              }}
+            >
+              {isFavorite ? 'Favorite! ✅' : 'Add To Favorite'}
+            </button>
             <h2>{snippet.channelTitle}</h2>
             <p>{snippet.description}</p>
           </div>

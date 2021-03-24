@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from '../Layout';
 import KeywordContext, { reducer as keywordReducer } from '../../context/SearchContext';
@@ -12,12 +12,21 @@ import ThemeContext, {
 import AuthContext, { authDispatcher } from '../../context/AuthContext';
 import Header from '../Header';
 import Routes from '../Routes/Routes.component';
+import { storage } from '../../utils/storage';
 
 function App() {
   const [theme, themeDispatch] = useReducer(themeReducer, lightTheme);
   const [keyword, keywordDispatch] = useReducer(keywordReducer, 'wizeline');
   const [searchVideos, searchVideosDispatch] = useReducer(searchVideosReducer, []);
   const [auth, authDispatch] = useReducer(authDispatcher, null);
+
+  useEffect(() => {
+    const favorites = storage.get('favorites');
+
+    if (!favorites) {
+      storage.set('favorites', []);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
