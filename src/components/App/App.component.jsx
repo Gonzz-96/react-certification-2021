@@ -29,20 +29,18 @@ function App() {
             <SearchVideosContext.Provider
               value={{ searchVideos, dispatch: searchVideosDispatch }}
             >
-              <div>
-                <Header />
-                <Switch>
-                  <Route exact path="/">
-                    <HomePage />
-                  </Route>
-                  <Route path="/video/:id">
-                    <VideoDetail />
-                  </Route>
-                  <Route path="*">
-                    <NotFound />
-                  </Route>
-                </Switch>
-              </div>
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <HomePage />
+                </Route>
+                <Route path="/video/:id">
+                  <VideoDetail />
+                </Route>
+                <Route path="*">
+                  <NotFound />
+                </Route>
+              </Switch>
             </SearchVideosContext.Provider>
           </KeywordContext.Provider>
         </ThemeContext.Provider>
