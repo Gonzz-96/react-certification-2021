@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Favorites from '../../pages/Favorites/Favorites.page';
 import HomePage from '../../pages/Home';
 import Login from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
@@ -14,6 +15,9 @@ const Routes = () => {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/favorites">
+          <Favorites />
         </Route>
         <Route path="/video/:id">
           <VideoDetail />

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
 import KeywordContext from '../../context/SearchContext';
 import ThemeContext from '../../context/ThemeContext';
