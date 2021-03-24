@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router';
+import AuthContext from '../../context/AuthContext';
 import loginApi from '../../utils/login';
 import { FormContainer } from './styled';
 
 const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
+  const { dispatch: authDispatch } = useContext(AuthContext);
 
   return (
     <React.Fragment>
       <FormContainer>
         <form
           onSubmit={(e) => {
-            console.log(`${user} ${password}`);
-            loginApi(user, password).then((value) => {});
+            loginApi(user, password)
+              .then((value) => {
+                authDispatch({ type: 'LOGIN', payload: value });
+                history.push('/');
+              })
+              .catch((e) => {
+                console.log(e);
+              });
             e.preventDefault();
           }}
         >
