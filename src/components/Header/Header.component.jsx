@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router';
 import KeywordContext from '../../context/SearchContext';
 import ThemeContext from '../../context/ThemeContext';
 import {
@@ -14,6 +15,7 @@ const Header = () => {
   const { theme, dispatch: dispatchTheme } = useContext(ThemeContext);
   const { keyword, dispatch: dispatchKeyword } = useContext(KeywordContext);
   const [text, setText] = useState(keyword);
+  const history = useHistory();
 
   return (
     <HeaderContainer>
@@ -27,6 +29,9 @@ const Header = () => {
           }}
         >
           <SearchBar
+            onClick={() => {
+              history.push('/');
+            }}
             type="text"
             value={text}
             onChange={(e) => {
