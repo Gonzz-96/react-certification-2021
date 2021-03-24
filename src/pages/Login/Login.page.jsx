@@ -38,13 +38,14 @@ const Login = () => {
           <label for="password">Password: </label>
           <input
             id="password"
+            type="password"
             style={{ width: '200px' }}
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
           <br />
-          <button type="submit">Equis de</button>
+          <button type="submit">Login</button>
         </form>
       </FormContainer>
     </React.Fragment>

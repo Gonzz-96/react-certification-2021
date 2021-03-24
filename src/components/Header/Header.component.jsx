@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import KeywordContext from '../../context/SearchContext';
 import ThemeContext from '../../context/ThemeContext';
 import {
@@ -54,7 +55,13 @@ const Header = () => {
           Dark Mode
         </label>
 
-        <UserIcon src={`${process.env.PUBLIC_URL}/user_icon.png`} alt="User Icon" />
+        <UserIcon
+          src={`${process.env.PUBLIC_URL}/user_icon.png`}
+          alt="User Icon"
+          onClick={() => {
+            history.push('/login');
+          }}
+        />
       </RightContent>
     </HeaderContainer>
   );
