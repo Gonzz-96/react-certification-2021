@@ -1,10 +1,6 @@
 import React, { useReducer } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-import HomePage from '../../pages/Home';
-import NotFound from '../../pages/NotFound';
+import { BrowserRouter } from 'react-router-dom';
 import Layout from '../Layout';
-
 import KeywordContext, { reducer as keywordReducer } from '../../context/SearchContext';
 import SearchVideosContext, {
   reducer as searchVideosReducer,
@@ -14,7 +10,7 @@ import ThemeContext, {
   lightTheme,
 } from '../../context/ThemeContext';
 import Header from '../Header';
-import VideoDetail from '../../pages/VideoDetail';
+import Routes from '../Routes/Routes.component';
 
 function App() {
   const [theme, themeDispatch] = useReducer(themeReducer, lightTheme);
@@ -30,17 +26,7 @@ function App() {
               value={{ searchVideos, dispatch: searchVideosDispatch }}
             >
               <Header />
-              <Switch>
-                <Route exact path="/">
-                  <HomePage />
-                </Route>
-                <Route path="/video/:id">
-                  <VideoDetail />
-                </Route>
-                <Route path="*">
-                  <NotFound />
-                </Route>
-              </Switch>
+              <Routes />
             </SearchVideosContext.Provider>
           </KeywordContext.Provider>
         </ThemeContext.Provider>

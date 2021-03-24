@@ -1,0 +1,25 @@
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import HomePage from '../../pages/Home';
+import NotFound from '../../pages/NotFound';
+import VideoDetail from '../../pages/VideoDetail';
+
+const Routes = () => {
+  return (
+    <React.Fragment>
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route path="/video/:id">
+          <VideoDetail />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
+    </React.Fragment>
+  );
+};
+
+export default Routes;
