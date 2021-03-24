@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { Redirect } from 'react-router';
+import { Route, Redirect } from 'react-router';
 import AuthContext from '../../context/AuthContext';
-import Login from '../../pages/Login';
 
 const ProtectedRoute = (props) => {
   const { auth } = useContext(AuthContext);
 
+  console.log('Protected route');
+  console.log(JSON.stringify(auth));
   let content;
-  if (auth) {
+
+  if (Object.keys(auth).length > 0) {
     content = <Route {...props} />;
   } else {
     content = <Redirect to="/login" />;

@@ -24,7 +24,13 @@ const Header = () => {
   return (
     <HeaderContainer>
       <LeftContent>
-        <MenuIcon src={`${process.env.PUBLIC_URL}/menu_icon.png`} alt="Menu Icon" />
+        <MenuIcon
+          src={`${process.env.PUBLIC_URL}/menu_icon.png`}
+          alt="Menu Icon"
+          onClick={() => {
+            history.push('/favorites');
+          }}
+        />
         <form
           style={{ height: '30px' }}
           onSubmit={(e) => {

@@ -5,6 +5,7 @@ import HomePage from '../../pages/Home';
 import Login from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import VideoDetail from '../../pages/VideoDetail';
+import ProtectedRoute from '../ProtectedRoute';
 
 const Routes = () => {
   return (
@@ -16,9 +17,9 @@ const Routes = () => {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/favorites">
+        <ProtectedRoute path="/favorites">
           <Favorites />
-        </Route>
+        </ProtectedRoute>
         <Route path="/video/:id">
           <VideoDetail />
         </Route>

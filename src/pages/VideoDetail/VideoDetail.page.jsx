@@ -7,7 +7,8 @@ import { useLocation, useParams } from 'react-router';
 const VideoDetail = () => {
   const { id } = useParams();
   const { theme } = useContext(ThemeContext);
-  const { snippet } = useLocation().state.video;
+  const video = useLocation().state.video;
+  const { snippet } = video;
 
   return (
     <React.Fragment>
