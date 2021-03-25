@@ -9,6 +9,7 @@ const Title = styled.p`
 
 const GridContainer = styled.div`
   display: grid;
+  height: 100vh;
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
   grid-template-columns: 20% 20% 20% 20%;

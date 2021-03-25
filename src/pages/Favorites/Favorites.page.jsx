@@ -5,7 +5,7 @@ import ThemeContext from '../../context/ThemeContext';
 import SearchVideosContext from '../../context/SearchVideosContext';
 import { storage } from '../../utils/storage';
 
-const Favorites = ({ videos = [] }) => {
+const Favorites = () => {
   const { theme } = useContext(ThemeContext);
   const { backgroundColor, color } = theme;
 
@@ -16,6 +16,7 @@ const Favorites = ({ videos = [] }) => {
     const favorites = storage.get('favorites') || [];
     setFavorites(favorites);
     searchVideosDispatch({ type: 'NEW_VIDEOS', payload: favorites });
+    // eslint-disable-next-line
   }, []);
 
   return (
