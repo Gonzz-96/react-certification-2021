@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
-  height: 7%;
+  height: 8vh;
   width: 100%;
   padding: 0 20px 0 20px;
   display: flex;

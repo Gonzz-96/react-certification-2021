@@ -3,10 +3,14 @@ import styled from 'styled-components';
 const Title = styled.p`
   font-size: 2.5rem;
   text-align: center;
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
 `;
 
 const GridContainer = styled.div`
   display: grid;
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
   grid-template-columns: 20% 20% 20% 20%;
   grid-column-gap: 20px;
   grid-row-gap: 20px;

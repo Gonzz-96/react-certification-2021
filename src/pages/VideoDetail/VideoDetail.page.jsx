@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import ThemeContext from '../../context/ThemeContext';
 import Suggestions from '../../components/Suggestions';
 import { VideoInformationContainer, GeneralContainer, IFrame } from './styled';
 
 const VideoDetail = ({ video, restOfVideos }) => {
+  const { theme } = useContext(ThemeContext);
   const [stateVideo, setVideo] = useState(video);
   const { id, snippet } = stateVideo;
 
@@ -12,7 +14,7 @@ const VideoDetail = ({ video, restOfVideos }) => {
 
   return (
     <React.Fragment>
-      <GeneralContainer>
+      <GeneralContainer theme={{ ...theme }}>
         <VideoInformationContainer>
           <IFrame
             id="ytplayer"

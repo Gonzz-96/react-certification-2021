@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Header from '../../components/Header';
 import VideoCard from '../../components/VideoCard';
 import VideoDetail from '../VideoDetail';
 import { GridContainer, Title } from './styled';
 
 import { useVideosSearch } from '../../hooks/useVideosSearch';
+import ThemeContext from '../../context/ThemeContext';
 
 const HomePage = () => {
-  const [keyword, setKeyword] = useState('wizeline');
   const [selectedVideo, setSelectedVideo] = useState();
-  const videos = useVideosSearch(keyword);
+  const videos = useVideosSearch();
+  const { theme } = useContext(ThemeContext);
 
-  const onSubmit = (newKeyword) => {
-    console.log(newKeyword);
-    setKeyword(newKeyword);
-  };
+  const { backgroundColor, color } = theme;
 
   let content;
   if (!selectedVideo) {
     content = (
       <React.Fragment>
-        <Header onSubmit={onSubmit} />
-        <Title>Welcome to my minichallenge :)</Title>
-        <GridContainer>
-          {videos.map((i) => {
-            const { title, description, thumbnails } = i.snippet;
-            return (
-              <VideoCard
-                title={title}
-                onClick={() => {
-                  setSelectedVideo(i);
-                }}
-                description={description}
-                thumbnail={thumbnails.high.url}
-              />
-            );
-          })}
-        </GridContainer>
+        <div style={{ backgroundColor }}>
+          <Header />
+          <Title theme={{ color }}>Welcome to my minichallenge :)</Title>
+          <GridContainer theme={{ color }}>
+            {videos.map((i) => {
+              const { title, description, thumbnails } = i.snippet;
+              return (
+                <VideoCard
+                  title={title}
+                  onClick={() => {
+                    setSelectedVideo(i);
+                  }}
+                  description={description}
+                  thumbnail={thumbnails.high.url}
+                />
+              );
+            })}
+          </GridContainer>
+        </div>
       </React.Fragment>
     );
   } else {
     content = (
       <React.Fragment>
-        <Header onSubmit={onSubmit} />
+        <Header />
         <VideoDetail video={selectedVideo} restOfVideos={videos} />
       </React.Fragment>
     );
